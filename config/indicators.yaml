@@ -1,0 +1,179 @@
+project:
+  name: Algorithmic Nation-State
+  version: 0.1
+
+countries:
+  - code: USA
+    name: United States
+
+  - code: DEU
+    name: Germany
+
+  - code: CHN
+    name: China
+
+  - code: JPN
+    name: Japan
+
+  - code: IND
+    name: India
+
+  - code: IDN
+    name: Indonesia
+
+  - code: TWN
+    name: Taiwan
+
+forecast_target:
+  primary:
+    variable: GDP_GROWTH
+
+  secondary:
+    - INFLATION
+    - UNEMPLOYMENT
+    - EXPORTS_PERCENT_GDP
+
+sources:
+
+  world_bank:
+
+    GDP_GROWTH:
+      indicator: NY.GDP.MKTP.KD.ZG
+      description: GDP growth annual percentage
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    GDP_PER_CAPITA:
+      indicator: NY.GDP.PCAP.CD
+      description: GDP per capita current USD
+      frequency: annual
+      unit: USD
+      transformation: log
+
+    INFLATION:
+      indicator: FP.CPI.TOTL.ZG
+      description: Inflation consumer prices annual percentage
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    UNEMPLOYMENT:
+      indicator: SL.UEM.TOTL.ZS
+      description: Unemployment total percentage of labor force
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    EXPORTS_PERCENT_GDP:
+      indicator: NE.EXP.GNFS.ZS
+      description: Exports of goods and services percentage of GDP
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    IMPORTS_PERCENT_GDP:
+      indicator: NE.IMP.GNFS.ZS
+      description: Imports of goods and services percentage of GDP
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    FDI_NET_INFLOWS:
+      indicator: BX.KLT.DINV.WD.GD.ZS
+      description: Foreign direct investment net inflows percentage GDP
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    HIGH_TECH_EXPORTS:
+      indicator: TX.VAL.TECH.MF.ZS
+      description: High technology exports percentage manufactured exports
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    MILITARY_EXPENDITURE:
+      indicator: MS.MIL.XPND.GD.ZS
+      description: Military expenditure percentage GDP
+      frequency: annual
+      unit: percent
+      transformation: none
+
+  oecd:
+
+    RND_EXPENDITURE:
+      dataset: MSTI
+      variable: GERD_GDP
+      description: Gross domestic expenditure on R&D percentage GDP
+      frequency: annual
+      unit: percent
+      transformation: none
+
+    LONG_TERM_INTEREST_RATE:
+      dataset: MEI
+      variable: IRLT
+      description: Long-term interest rates
+      frequency: monthly
+      unit: percent
+      transformation: annual_average
+
+    INDUSTRIAL_PRODUCTION:
+      dataset: MEI
+      variable: PRINTO01
+      description: Industrial production index
+      frequency: monthly
+      unit: index
+      transformation: annual_average
+
+abm:
+
+  agent_types:
+    - state
+    - ai_firm
+    - compute_provider
+
+  strategic_resources:
+    - compute
+    - data
+    - capital
+    - energy
+    - talent
+
+  geopolitical_shocks:
+    - tariffs
+    - export_controls
+    - semiconductor_restrictions
+    - data_localization
+    - cloud_fragmentation
+
+forecasting:
+
+  train_start_year: 2000
+  forecast_horizon_years: 5
+
+  models:
+    - arima
+    - sarimax
+    - random_forest
+    - xgboost
+
+  evaluation_metrics:
+    - rmse
+    - mae
+    - mape
+
+simulation:
+
+  monte_carlo:
+    iterations: 1000
+
+  bayesian_updates:
+    enabled: true
+
+storage:
+
+  raw_data_path: data/raw
+  processed_data_path: data/processed
+  figures_path: reports/figures
+  tables_path: reports/tables
