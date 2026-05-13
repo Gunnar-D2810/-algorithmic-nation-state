@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/raw/*
+!data/raw/.gitkeep
+
+# MacOS
+.DS_Store
+
+# Environment
+.env
+
+# Outputs
+reports/figures/*
+reports/tables/*
