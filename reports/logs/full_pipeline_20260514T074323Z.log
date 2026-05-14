@@ -1,0 +1,24 @@
+2026-05-14 09:43:23,775 INFO full_pipeline - Full pipeline log: /Users/Gunnar/Documents/algorithmic-nation-state/reports/logs/full_pipeline_20260514T074323Z.log
+2026-05-14 09:43:23,834 INFO full_pipeline - [START] ingestion_validation
+2026-05-14 09:43:23,856 INFO full_pipeline - [PASSED] ingestion_validation - 0.02s
+2026-05-14 09:43:23,856 INFO full_pipeline - [START] import_validation
+2026-05-14 09:43:34,207 INFO full_pipeline - [PASSED] import_validation - 10.35s
+2026-05-14 09:43:34,208 INFO full_pipeline - [START] schema_validation
+2026-05-14 09:43:34,219 INFO full_pipeline - [PASSED] schema_validation - 0.01s
+2026-05-14 09:43:34,220 INFO full_pipeline - [START] baseline_forecasting
+2026-05-14 09:45:06,396 INFO full_pipeline - [PASSED] baseline_forecasting - 92.18s
+2026-05-14 09:45:06,397 INFO full_pipeline - [START] modern_forecasting
+2026-05-14 09:45:31,105 INFO full_pipeline - [PASSED] modern_forecasting - 24.71s
+2026-05-14 09:45:31,106 INFO full_pipeline - [START] interpretability
+2026-05-14 09:47:05,310 INFO full_pipeline - [PASSED] interpretability - 94.20s
+2026-05-14 09:47:05,311 INFO full_pipeline - [START] abm
+2026-05-14 09:47:08,904 INFO full_pipeline - [PASSED] abm - 3.59s
+2026-05-14 09:47:08,905 INFO full_pipeline - [START] bayesian_updates
+2026-05-14 09:47:15,295 INFO full_pipeline - [PASSED] bayesian_updates - 6.39s
+2026-05-14 09:47:15,296 INFO full_pipeline - [START] monte_carlo
+2026-05-14 09:47:46,311 INFO full_pipeline - [PASSED] monte_carlo - 31.02s
+2026-05-14 09:47:46,312 INFO full_pipeline - [START] report_assets
+2026-05-14 09:47:48,623 INFO full_pipeline - [PASSED] report_assets - 2.31s
+2026-05-14 09:47:48,624 INFO full_pipeline - [START] notebook_validation
+2026-05-14 09:47:48,630 INFO full_pipeline - [PASSED] notebook_validation - 0.01s
+2026-05-14 09:47:48,632 INFO full_pipeline - Full pipeline complete. Status written to reports/tables.

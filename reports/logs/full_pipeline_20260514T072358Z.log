@@ -1,0 +1,4 @@
+2026-05-14 09:23:58,427 INFO full_pipeline - Full pipeline log: /Users/Gunnar/Documents/algorithmic-nation-state/reports/logs/full_pipeline_20260514T072358Z.log
+2026-05-14 09:23:58,473 INFO full_pipeline - [START] ingestion_validation
+2026-05-14 09:23:58,497 INFO full_pipeline - [PASSED] ingestion_validation - 0.02s
+2026-05-14 09:23:58,497 INFO full_pipeline - [START] import_validation

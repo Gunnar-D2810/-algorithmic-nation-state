@@ -1,0 +1,3 @@
+stage,status,seconds,detail
+ingestion_validation,passed,0.02271750010550022,checks=6;failed=0;output=/Users/Gunnar/Documents/algorithmic-nation-state/reports/tables/ingestion_validation_summary.csv
+import_validation,failed,74.1787384999916,"RuntimeError: Import validation failed: [{'module': 'src.abm.simulation', 'passed': False, 'detail': 'import_timeout_after_30s'}, {'module': 'src.monte_carlo.simulation_engine', 'passed': False, 'detail': 'import_timeout_after_30s'}]"

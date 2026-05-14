@@ -196,3 +196,133 @@ Outputs are written to:
 The ABM uses stylized resource indexes for compute, data, capital, energy, and
 talent. It is a conceptual simulation framework, not a geopolitical prediction
 engine or calibrated empirical model.
+
+## Probabilistic Forecasting And Uncertainty
+
+The probabilistic layer combines closed-form Bayesian updates with Monte Carlo
+scenario uncertainty propagation:
+
+- Bayesian Beta-Binomial updates for event-style evidence proxies
+- Dirichlet scenario-weight updates
+- Monte Carlo perturbations over ABM scenario assumptions
+- Spearman sensitivity rankings for uncertainty drivers
+
+Run from the repository root:
+
+```bash
+.venv/bin/python scripts/run_bayesian_updates.py
+.venv/bin/python scripts/run_monte_carlo.py --iterations 100
+```
+
+Outputs are written to:
+
+- `reports/tables/probabilistic/`
+- `reports/figures/probabilistic/`
+- `reports/probabilistic_methodology.md`
+
+The generated probabilities are conditional on weak priors and simulation/model
+evidence proxies. They are not calibrated geopolitical probabilities.
+
+## Integrated Research Workflow
+
+The integrated workflow validates inputs, runs the modeling layers, generates
+publication-style report assets, validates notebooks, and records run metadata.
+
+Run the full pipeline from the repository root:
+
+```bash
+.venv/bin/python scripts/run_full_pipeline.py --monte-carlo-iterations 100
+```
+
+By default, the pipeline validates the existing processed macro panel. It does
+not call the World Bank API unless explicitly requested:
+
+```bash
+.venv/bin/python scripts/run_full_pipeline.py --refresh-data
+```
+
+Useful options:
+
+- `--continue-on-error`: keep running later stages after a stage failure
+- `--dry-run`: print and validate orchestration without running subprocesses
+- `--skip-abm`, `--skip-monte-carlo`, etc.: rerun selected parts only
+- `--seed`: set deterministic simulation seed
+- `--time-steps`: set ABM timestep count
+
+Integrated outputs include:
+
+- `reports/main_analysis_results.md`
+- `reports/methodology_summary.md`
+- `reports/limitations_and_assumptions.md`
+- `reports/project_architecture.md`
+- `reports/figures/integrated/`
+- `reports/tables/pipeline_status_latest.csv`
+- `reports/tables/report_asset_inventory.csv`
+- `reports/logs/`
+
+To regenerate only the integrated markdown reports and figures:
+
+```bash
+.venv/bin/python scripts/generate_report_assets.py
+```
+
+## Notebooks
+
+The main notebooks are:
+
+- `notebooks/main_analysis.ipynb`: runs and summarizes the complete workflow
+- `notebooks/forecasting_analysis.ipynb`: baseline and modern forecasting
+- `notebooks/abm_analysis.ipynb`: ECAIF scenario simulation
+- `notebooks/probabilistic_analysis.ipynb`: Bayesian and Monte Carlo layers
+
+Each notebook uses project scripts rather than duplicating implementation logic.
+
+## Project Architecture
+
+Core modules:
+
+- `src/data`: World Bank ingestion, raw response storage, panel cleaning
+- `src/models`: forecasting, modern benchmarks, evaluation, interpretability
+- `src/abm`: agents, resources, shocks, environment, simulation metrics
+- `src/bayesian`: priors, likelihood evidence, posterior updates
+- `src/monte_carlo`: uncertainty distributions, simulation engine, sensitivity
+- `src/utils`: configuration, logging, reproducibility, export helpers
+
+See `reports/project_architecture.md` for the integrated data-flow diagram and
+module relationships.
+
+## Setup
+
+The project targets Python 3.12, but the current local environment may use a
+different interpreter. Use the repository virtual environment when available:
+
+```bash
+.venv/bin/python -m compileall src scripts
+```
+
+Install missing runtime dependencies as needed for optional models. Prophet,
+TensorFlow/LSTM, and NeuralForecast are optional; unavailable models are logged
+as skipped rather than replaced with fake results.
+
+## Reproducibility Guidance
+
+- Keep `config/indicators.yaml` as the source of configured countries,
+  indicators, and storage paths.
+- Use scripts from the repository root.
+- Do not edit generated CSVs by hand.
+- Preserve raw API responses under `data/raw/`.
+- Inspect `reports/logs/` and `reports/full_pipeline_metadata.json` after full
+  runs.
+- Treat zero observed Taiwan rows as a data limitation, not a value to impute.
+
+## Limitations
+
+- OECD ingestion is not implemented yet.
+- The macroeconomic panel is annual and small for forecasting.
+- Forecast results are baseline diagnostics, not evidence of predictive
+  dominance.
+- Feature importance and sensitivity rankings are not causal evidence.
+- ABM and Monte Carlo outputs are exploratory simulations conditional on
+  assumptions.
+- Bayesian scenario weights are subjective stress-test summaries unless future
+  calibrated priors and likelihoods are added.

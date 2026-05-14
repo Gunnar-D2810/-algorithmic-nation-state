@@ -1,0 +1,13 @@
+2026-05-14 09:36:49,970 INFO full_pipeline - Full pipeline log: /Users/Gunnar/Documents/algorithmic-nation-state/reports/logs/full_pipeline_20260514T073649Z.log
+2026-05-14 09:36:50,030 INFO full_pipeline - [START] ingestion_validation
+2026-05-14 09:36:50,053 INFO full_pipeline - [PASSED] ingestion_validation - 0.02s
+2026-05-14 09:36:50,053 INFO full_pipeline - [START] import_validation
+2026-05-14 09:38:04,232 ERROR full_pipeline - Stage failed: import_validation
+Traceback (most recent call last):
+  File "/Users/Gunnar/Documents/algorithmic-nation-state/scripts/run_full_pipeline.py", line 104, in execute
+    detail = action()
+  File "/Users/Gunnar/Documents/algorithmic-nation-state/scripts/run_full_pipeline.py", line 144, in <lambda>
+    execute("import_validation", action=lambda: validate_project_imports(paths))
+  File "/Users/Gunnar/Documents/algorithmic-nation-state/scripts/run_full_pipeline.py", line 227, in validate_project_imports
+    raise RuntimeError(f"Import validation failed: {failed.to_dict('records')}")
+RuntimeError: Import validation failed: [{'module': 'src.abm.simulation', 'passed': False, 'detail': 'import_timeout_after_30s'}, {'module': 'src.monte_carlo.simulation_engine', 'passed': False, 'detail': 'import_timeout_after_30s'}]

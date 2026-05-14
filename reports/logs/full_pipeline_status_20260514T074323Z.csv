@@ -1,0 +1,12 @@
+stage,status,seconds,detail
+ingestion_validation,passed,0.021478042006492615,checks=6;failed=0;output=/Users/Gunnar/Documents/algorithmic-nation-state/reports/tables/ingestion_validation_summary.csv
+import_validation,passed,10.351193625014275,modules=8;output=/Users/Gunnar/Documents/algorithmic-nation-state/reports/tables/import_validation_summary.csv
+schema_validation,passed,0.011073334026150405,tables=6;output=/Users/Gunnar/Documents/algorithmic-nation-state/reports/tables/schema_validation_summary.csv
+baseline_forecasting,passed,92.17555820802227,completed
+modern_forecasting,passed,24.7079471249599,completed
+interpretability,passed,94.2041003749473,completed
+abm,passed,3.5923102499218658,completed
+bayesian_updates,passed,6.39005150005687,completed
+monte_carlo,passed,31.015123749966733,completed
+report_assets,passed,2.310771125019528,completed
+notebook_validation,passed,0.006270207930356264,notebooks=4;output=/Users/Gunnar/Documents/algorithmic-nation-state/reports/tables/notebook_validation_summary.csv
